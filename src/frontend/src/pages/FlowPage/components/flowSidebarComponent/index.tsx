@@ -38,6 +38,7 @@ import { normalizeString } from "./helpers/normalize-string";
 import sensitiveSort from "./helpers/sensitive-sort";
 import { traditionalSearchMetadata } from "./helpers/traditional-search-metadata";
 import { UniqueInputsComponents } from "./types";
+import { useTranslation } from "react-i18next";
 
 const CATEGORIES = SIDEBAR_CATEGORIES;
 const BUNDLES = SIDEBAR_BUNDLES;
@@ -49,6 +50,7 @@ interface FlowSidebarComponentProps {
 }
 
 export function FlowSidebarComponent({ isLoading }: FlowSidebarComponentProps) {
+  const { t } = useTranslation()
   const data = useTypesStore((state) => state.data);
 
   const { getFilterEdge, setFilterEdge, filterType } = useFlowStore(
@@ -208,6 +210,14 @@ export function FlowSidebarComponent({ isLoading }: FlowSidebarComponentProps) {
     };
 
     const fuseData = Object.entries(data).flatMap(([category, items]) =>
+      // Object.entries(items).map(([key, value]) => {
+      //   value.display_name = t(value.display_name)
+      //   return {
+      //     ...value,
+      //     category,
+      //     key,
+      //   }
+      // }),
       Object.entries(items).map(([key, value]) => ({
         ...value,
         category,
@@ -216,7 +226,7 @@ export function FlowSidebarComponent({ isLoading }: FlowSidebarComponentProps) {
     );
 
     setFuse(new Fuse(fuseData, options));
-  }, [data]);
+  }, [data, t]);
 
   useEffect(() => {
     if (getFilterEdge.length !== 0) {

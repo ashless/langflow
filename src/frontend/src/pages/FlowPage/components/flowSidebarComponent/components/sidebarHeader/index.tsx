@@ -13,6 +13,7 @@ import { SidebarHeaderComponentProps } from "../../types";
 import FeatureToggles from "../featureTogglesComponent";
 import { SearchInput } from "../searchInput";
 import { SidebarFilterComponent } from "../sidebarFilterComponent";
+import { useTranslation } from "react-i18next";
 
 export const SidebarHeaderComponent = memo(function SidebarHeaderComponent({
   showConfig,
@@ -32,6 +33,7 @@ export const SidebarHeaderComponent = memo(function SidebarHeaderComponent({
   setFilterData,
   data,
 }: SidebarHeaderComponentProps) {
+  const { t } = useTranslation()
   return (
     <SidebarHeader className="flex w-full flex-col gap-4 p-4 pb-1">
       <Disclosure open={showConfig} onOpenChange={setShowConfig}>
@@ -39,7 +41,7 @@ export const SidebarHeaderComponent = memo(function SidebarHeaderComponent({
           <SidebarTrigger className="text-muted-foreground">
             <ForwardedIconComponent name="PanelLeftClose" />
           </SidebarTrigger>
-          <h3 className="flex-1 text-sm font-semibold">Components</h3>
+          <h3 className="flex-1 text-sm font-semibold">{t('Components')}</h3>
           <DisclosureTrigger>
             <div>
               <ShadTooltip content="Component settings" styleClasses="z-50">

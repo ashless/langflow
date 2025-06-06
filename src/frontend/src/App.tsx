@@ -4,6 +4,7 @@ import { RouterProvider } from "react-router-dom";
 import { LoadingPage } from "./pages/LoadingPage";
 import router from "./routes";
 import { useDarkStore } from "./stores/darkStore";
+import "./i18n/config";
 
 export default function App() {
   const dark = useDarkStore((state) => state.dark);

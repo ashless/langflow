@@ -8,6 +8,7 @@ import { Separator } from "@radix-ui/react-separator";
 import { useState } from "react";
 import { AddFolderButton } from "./add-folder-button";
 import { UploadFolderButton } from "./upload-folder-button";
+import { useTranslation } from "react-i18next";
 
 export const HeaderButtons = ({
   handleUploadFlowsToFolder,
@@ -42,6 +43,8 @@ export const HeaderButtons = ({
     });
   };
 
+  const { t } = useTranslation();
+
   return (
     <>
       {!isDismissedDialog && (
@@ -63,8 +66,8 @@ export const HeaderButtons = ({
         <SidebarTrigger className="lg:hidden">
           <IconComponent name="PanelLeftClose" className="h-4 w-4" />
         </SidebarTrigger>
-
-        <div className="flex-1 text-sm font-medium">Projects</div>
+        
+        <div className="flex-1 text-sm font-medium">{t('Projects')}</div>
         <div className="flex items-center gap-1">
           <UploadFolderButton
             onClick={handleUploadFlowsToFolder}

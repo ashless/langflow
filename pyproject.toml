@@ -124,9 +124,8 @@ dependencies = [
     "langchain-ibm>=0.3.8",
     "opik>=1.6.3",
     "openai>=1.68.2",
-    "cleanlab-tlm>=1.1.2",
     'gassist>=0.0.1; sys_platform == "win32"',
-    "twelvelabs>=0.4.7",
+    "twelvelabs>=0.4.7"
 ]
 
 [dependency-groups]
@@ -137,6 +136,9 @@ dev = [
     "mypy>=1.11.0",
     "ruff>=0.9.7,<0.10",
     "httpx>=0.27.0",
+    "httpx[socks]>=0.27.0",
+    "psycopg[binary]>=2.9.10",
+    "psycopg>=3.2.9",
     "pytest>=8.2.0",
     "types-requests>=2.32.0",
     "requests>=2.32.0",

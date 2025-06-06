@@ -5,6 +5,7 @@ import { APIClassType } from "@/types/api";
 import { AllNodeType } from "@/types/flow";
 import { customStringify } from "@/utils/reactflowUtils";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export function TweakComponent({
   open,
@@ -16,6 +17,8 @@ export function TweakComponent({
   const [nodeClass, setNodeClass] = useState<APIClassType | undefined>(
     node.data?.node,
   );
+
+  const { t } = useTranslation()
 
   useEffect(() => {
     if (
@@ -29,7 +32,7 @@ export function TweakComponent({
     <AccordionComponent
       trigger={
         <ShadTooltip side="top" styleClasses="z-50" content={node.data.id}>
-          <div className="text-primary">{node.data.node?.display_name}</div>
+          <div className="text-primary">{t(node.data.node?.display_name)}</div>
         </ShadTooltip>
       }
       keyValue={node.data.id}

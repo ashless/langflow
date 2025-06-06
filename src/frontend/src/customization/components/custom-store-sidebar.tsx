@@ -1,9 +1,12 @@
 import { ForwardedIconComponent } from "@/components/common/genericIconComponent";
+import { useTranslation } from "react-i18next";
 
 export const CustomStoreSidebar = () => {
+  const { t } = useTranslation()
+
   return [
     {
-      title: "Langflow API Keys",
+      title: t('Langflow API Keys'),
       href: "/settings/api-keys",
       icon: (
         <ForwardedIconComponent
@@ -13,7 +16,7 @@ export const CustomStoreSidebar = () => {
       ),
     },
     {
-      title: "Langflow Store",
+      title: t("Langflow Store"),
       href: "/settings/store",
       icon: (
         <ForwardedIconComponent

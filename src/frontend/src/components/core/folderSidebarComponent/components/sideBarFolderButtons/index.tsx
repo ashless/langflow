@@ -51,6 +51,7 @@ import { HeaderButtons } from "./components/header-buttons";
 import { InputEditFolderName } from "./components/input-edit-folder-name";
 import { MCPServerNotice } from "./components/mcp-server-notice";
 import { SelectOptions } from "./components/select-options";
+import { useTranslation } from "react-i18next";
 
 type SideBarFoldersButtonsComponentProps = {
   handleChangeFolder?: (id: string) => void;
@@ -81,6 +82,8 @@ const SideBarFoldersButtonsComponent = ({
     }
     return currentFolder.includes(itemId);
   };
+  
+  const { t } = useTranslation();
 
   const setErrorData = useAlertStore((state) => state.setErrorData);
   const setSuccessData = useAlertStore((state) => state.setSuccessData);
@@ -140,7 +143,7 @@ const SideBarFoldersButtonsComponent = ({
         if (objects.every((flow) => flow.data?.nodes)) {
           uploadFlow({ files }).then(() => {
             setSuccessData({
-              title: "Uploaded successfully",
+              title: t('Uploaded successfully'),
             });
           });
         } else {
@@ -152,13 +155,13 @@ const SideBarFoldersButtonsComponent = ({
               {
                 onSuccess: () => {
                   setSuccessData({
-                    title: "Project uploaded successfully.",
+                    title: t('Project uploaded successfully'),
                   });
                 },
                 onError: (err) => {
                   console.log(err);
                   setErrorData({
-                    title: `Error on uploading your project, try dragging it into an existing project.`,
+                    title: t('Error on uploading your project, try dragging it into an existing project'),
                     list: [err["response"]["data"]["message"]],
                   });
                 },
@@ -181,7 +184,7 @@ const SideBarFoldersButtonsComponent = ({
         },
         onError: (e) => {
           setErrorData({
-            title: `An error occurred while downloading your project.`,
+            title: t('An error occurred while downloading your project'),
           });
         },
       },
@@ -192,14 +195,14 @@ const SideBarFoldersButtonsComponent = ({
     mutateAddFolder(
       {
         data: {
-          name: "New Project",
+          name: t('New Project'),
           parent_id: null,
           description: "",
         },
       },
       {
         onSuccess: (folder) => {
-          track("Create New Project");
+          track(t('Create New Project'));
           handleChangeFolder!(folder.id);
         },
       },
@@ -425,7 +428,7 @@ const SideBarFoldersButtonsComponent = ({
                               ) : (
                                 <span className="block w-0 grow truncate text-sm opacity-100">
                                   {item.name === DEFAULT_FOLDER_DEPRECATED
-                                    ? DEFAULT_FOLDER
+                                    ? t('CONSTANTS.DEFAULT_FOLDER')
                                     : item.name}
                                 </span>
                               )}
@@ -481,7 +484,7 @@ const SideBarFoldersButtonsComponent = ({
               className="text-sm"
             >
               <ForwardedIconComponent name="File" className="h-4 w-4" />
-              My Files
+              {t('My Files')}
             </SidebarMenuButton>
           </div>
         </SidebarFooter>

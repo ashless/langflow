@@ -16,6 +16,7 @@ import { cn } from "@/utils/utils";
 import { debounce } from "lodash";
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 interface HeaderComponentProps {
   flowType: "flows" | "components" | "mcp";
@@ -62,6 +63,8 @@ const HeaderComponent = ({
       debouncedSetSearch.cancel(); // Cleanup on unmount
     };
   }, [debouncedSearch, debouncedSetSearch]);
+
+  const { t } = useTranslation()
 
   // If current flowType is not available based on feature flag, switch to flows
   useEffect(() => {
@@ -113,7 +116,7 @@ const HeaderComponent = ({
             </SidebarTrigger>
           </div>
         </div>
-        {folderName === DEFAULT_FOLDER_DEPRECATED ? DEFAULT_FOLDER : folderName}
+        {folderName === DEFAULT_FOLDER_DEPRECATED ? t('CONSTANTS.DEFAULT_FOLDER') : folderName}
       </div>
       {!isEmptyFolder && (
         <>
@@ -223,7 +226,7 @@ const HeaderComponent = ({
                       loading={isDeleting}
                     >
                       <ForwardedIconComponent name="Trash2" />
-                      Delete
+                      {t('Delete')}
                     </Button>
                   </DeleteConfirmationModal>
                 </div>

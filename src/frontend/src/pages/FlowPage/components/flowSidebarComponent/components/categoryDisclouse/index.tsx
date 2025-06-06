@@ -8,6 +8,7 @@ import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
 import { APIClassType } from "@/types/api";
 import { memo, useCallback } from "react";
 import SidebarItemsList from "../sidebarItemsList";
+import { useTranslation } from "react-i18next";
 
 export const CategoryDisclosure = memo(function CategoryDisclosure({
   item,
@@ -29,6 +30,7 @@ export const CategoryDisclosure = memo(function CategoryDisclosure({
   ) => void;
   sensitiveSort: (a: any, b: any) => number;
 }) {
+  const { t } = useTranslation()
   const handleKeyDownInput = useCallback(
     (e: React.KeyboardEvent<HTMLDivElement>) => {
       if (e.key === "Enter" || e.key === " ") {
@@ -68,7 +70,7 @@ export const CategoryDisclosure = memo(function CategoryDisclosure({
                 className="h-4 w-4 group-aria-expanded/collapsible:text-accent-pink-foreground"
               />
               <span className="flex-1 group-aria-expanded/collapsible:font-semibold">
-                {item.display_name}
+                {t(item.display_name)}
               </span>
               <ForwardedIconComponent
                 name="ChevronRight"

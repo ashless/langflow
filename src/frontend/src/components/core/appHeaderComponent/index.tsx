@@ -15,6 +15,13 @@ import useTheme from "@/customization/hooks/use-custom-theme";
 import useAlertStore from "@/stores/alertStore";
 import { useEffect, useRef, useState } from "react";
 import FlowMenu from "./components/FlowMenu";
+import { useTranslation } from "react-i18next";
+import { 
+  DropdownMenu, 
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem
+ } from "../../ui/dropdown-menu";
 
 export default function AppHeader(): JSX.Element {
   const notificationCenter = useAlertStore((state) => state.notificationCenter);
@@ -48,6 +55,12 @@ export default function AppHeader(): JSX.Element {
       ? `${baseClasses} right-[0.3rem] top-[5px]`
       : "hidden";
   };
+
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang);
+  }
 
   return (
     <div
@@ -121,11 +134,10 @@ export default function AppHeader(): JSX.Element {
                   <span className={getNotificationBadge()} />
                   <ForwardedIconComponent
                     name="Bell"
-                    className={`side-bar-button-size h-4 w-4 ${
-                      activeState === "notifications"
-                        ? "text-primary"
-                        : "text-muted-foreground group-hover:text-primary"
-                    }`}
+                    className={`side-bar-button-size h-4 w-4 ${activeState === "notifications"
+                      ? "text-primary"
+                      : "text-muted-foreground group-hover:text-primary"
+                      }`}
                     strokeWidth={2}
                   />
                   <span className="hidden whitespace-nowrap">
@@ -136,6 +148,33 @@ export default function AppHeader(): JSX.Element {
             </AlertDropdown>
           </ShadTooltip>
         </AlertDropdown>
+
+        <>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button
+                className="extra-side-bar-save-disable"
+              >
+                <ForwardedIconComponent name="Languages" className="side-bar-button-size" />
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="mr-1 mt-1 min-w-40">
+              <DropdownMenuItem
+                className="cursor-pointer gap-2"
+                onClick={() => { changeLanguage("zh_cn") }}
+              >
+                中文
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                className="cursor-pointer gap-2"
+                onClick={() => { changeLanguage("en") }}
+              >
+                English
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </>
+
         <Separator
           orientation="vertical"
           className="my-auto h-7 dark:border-zinc-700"
