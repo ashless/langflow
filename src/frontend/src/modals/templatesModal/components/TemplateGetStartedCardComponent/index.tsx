@@ -4,6 +4,7 @@ import { track } from "@/customization/utils/analytics";
 import useAddFlow from "@/hooks/flows/use-add-flow";
 import { useFolderStore } from "@/stores/foldersStore";
 import { updateIds } from "@/utils/reactflowUtils";
+import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { CardData } from "../../../../types/templates/types";
 
@@ -12,12 +13,15 @@ export default function TemplateGetStartedCardComponent({
   bgHorizontalImage,
   icon,
   category,
+  categoryDisplayName,
   flow,
+  displayName,
 }: CardData) {
   const addFlow = useAddFlow();
   const navigate = useCustomNavigate();
   const { folderId } = useParams();
   const myCollectionId = useFolderStore((state) => state.myCollectionId);
+  const { t, i18n } = useTranslation();
 
   const folderIdUrl = folderId ?? myCollectionId;
 
@@ -63,12 +67,12 @@ export default function TemplateGetStartedCardComponent({
         <div className="flex items-center gap-2 text-zinc-400 mix-blend-plus-lighter">
           <ForwardedIconComponent name={icon} className="h-4 w-4" />
           <span className="font-mono text-xs font-semibold uppercase tracking-wider">
-            {category}
+            {categoryDisplayName ? t(`${categoryDisplayName}`) : category}
           </span>
         </div>
         <div className="flex w-full items-center justify-between">
           <h3 className="line-clamp-3 text-lg font-bold lg:text-xl">
-            {flow.name}
+            {displayName ? t(`${displayName}`) : flow.name}
           </h3>
           <ForwardedIconComponent
             name="ArrowRight"

@@ -12,6 +12,7 @@ import BaseModal from "../baseModal";
 import GetStartedComponent from "./components/GetStartedComponent";
 import TemplateContentComponent from "./components/TemplateContentComponent";
 import { Nav } from "./components/navComponent";
+import { useTranslation } from "react-i18next";
 
 export default function TemplatesModal({
   open,
@@ -21,38 +22,39 @@ export default function TemplatesModal({
   const addFlow = useAddFlow();
   const navigate = useCustomNavigate();
   const { folderId } = useParams();
+  const { t } = useTranslation();
 
   // Define categories and their items
   const categories: Category[] = [
     {
-      title: "Templates",
+      title: "TemplatesModal.Templates",
       items: [
-        { title: "Get started", icon: "SquarePlay", id: "get-started" },
-        { title: "All templates", icon: "LayoutPanelTop", id: "all-templates" },
+        { title: "TemplatesModal.Get started", icon: "SquarePlay", id: "get-started" },
+        { title: "TemplatesModal.All templates", icon: "LayoutPanelTop", id: "all-templates" },
       ],
     },
     {
-      title: "Use Cases",
+      title: "TemplatesModal.Use Cases",
       items: [
-        { title: "Assistants", icon: "BotMessageSquare", id: "assistants" },
-        { title: "Classification", icon: "Tags", id: "classification" },
-        { title: "Coding", icon: "TerminalIcon", id: "coding" },
+        { title: "TemplatesModal.Assistants", icon: "BotMessageSquare", id: "assistants" },
+        { title: "TemplatesModal.Classification", icon: "Tags", id: "classification" },
+        { title: "TemplatesModal.Coding", icon: "TerminalIcon", id: "coding" },
         {
-          title: "Content Generation",
+          title: "TemplatesModal.Content Generation",
           icon: "Newspaper",
           id: "content-generation",
         },
-        { title: "Q&A", icon: "Database", id: "q-a" },
+        { title: "TemplatesModal.Q&A", icon: "Database", id: "q-a" },
         // { title: "Summarization", icon: "Bot", id: "summarization" },
         // { title: "Web Scraping", icon: "CodeXml", id: "web-scraping" },
       ],
     },
     {
-      title: "Methodology",
+      title: "TemplatesModal.Methodology",
       items: [
-        { title: "Prompting", icon: "MessagesSquare", id: "chatbots" },
-        { title: "RAG", icon: "Database", id: "rag" },
-        { title: "Agents", icon: "Bot", id: "agents" },
+        { title: "TemplatesModal.Prompting", icon: "MessagesSquare", id: "chatbots" },
+        { title: "TemplatesModal.RAG", icon: "Database", id: "rag" },
+        { title: "TemplatesModal.Agents", icon: "Bot", id: "agents" },
       ],
     },
   ];
@@ -79,9 +81,9 @@ export default function TemplatesModal({
               <BaseModal.Footer>
                 <div className="flex w-full flex-col justify-between gap-4 pb-4 sm:flex-row sm:items-center">
                   <div className="flex flex-col items-start justify-center">
-                    <div className="font-semibold">Start from scratch</div>
+                    <div className="font-semibold">{t('Start from scratch')}</div>
                     <div className="text-sm text-muted-foreground">
-                      Begin with a fresh flow to build from scratch.
+                      {t('Begin with a fresh flow to build from scratch')}
                     </div>
                   </div>
                   <Button
@@ -101,7 +103,7 @@ export default function TemplatesModal({
                       name="Plus"
                       className="h-4 w-4 shrink-0"
                     />
-                    Blank Flow
+                    {t("Blank Flow")}
                   </Button>
                 </div>
               </BaseModal.Footer>

@@ -43,5 +43,27 @@
     "Tools": "工具",
     "Logic": "逻辑",
     "Helpers": "小帮手"
-  }
+  },
+  "TemplatesModal": {
+    "Templates": "模板",
+    "Get started": "开始",
+    "All templates": "所有模板",
+    "Use Cases": "用例",
+    "Assistants": "助理",
+    "Classification": "分类",
+    "Coding": "编程",
+    "Content Generation": "内容生成",
+    "Q&A": "问答(Q&A)",
+    "Methodology": "Methodology",
+    "Prompting": "提示词",
+    "RAG": "RAG",
+    "Agents": "智能体"
+  },
+  "Basic Prompting": "基本提示词模式",
+  "Vector Store RAG": "RAG向量存储模式",
+  "Simple Agent": "简易智能体模式",
+  "Start with templates showcasing Langflow's Prompting, RAG, and Agent use cases": "开始使用展示 Langflow 的提示工程（Prompting）、RAG（检索增强生成）和智能体（Agent）用例的模板。",
+  "Start from scratch": "从头开始",
+  "Begin with a fresh flow to build from scratch": "以全新的流程从头开始构建。",
+  "Blank Flow": "空白流程"
 }

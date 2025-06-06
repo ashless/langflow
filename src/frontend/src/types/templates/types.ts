@@ -16,7 +16,9 @@ export interface CardData {
   bgHorizontalImage: string;
   icon: string;
   category: string;
+  categoryDisplayName: string | undefined;
   flow: FlowType | undefined;
+  displayName: String | undefined;
 }
 
 export interface TemplateCategoryProps {

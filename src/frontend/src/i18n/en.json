@@ -43,5 +43,27 @@
     "Tools": "Tools",
     "Logic": "Logic",
     "Helpers": "Helpers"
-  }
+  },
+  "TemplatesModal": {
+    "Templates": "Templates",
+    "Get started": "Get started",
+    "All templates": "All templates",
+    "Use Cases": "Use Cases",
+    "Assistants": "Assistants",
+    "Classification": "Classification",
+    "Coding": "Coding",
+    "Content Generation": "Content Generation",
+    "Q&A": "Q&A",
+    "Methodology": "Methodology",
+    "Prompting": "Prompting",
+    "RAG": "RAG",
+    "Agents": "Agents"
+  },
+  "Basic Prompting": "Basic Prompting",
+  "Vector Store RAG": "Vector Store RAG",
+  "Simple Agent": "Simple Agent",
+  "Start with templates showcasing Langflow's Prompting, RAG, and Agent use cases": "Start with templates showcasing Langflow's Prompting, RAG, and Agent use cases",
+  "Start from scratch": "Start from scratch",
+  "Begin with a fresh flow to build from scratch": "Begin with a fresh flow to build from scratch.",
+  "Blank Flow": "Blank Flow"
 }

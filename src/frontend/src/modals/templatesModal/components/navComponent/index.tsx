@@ -14,10 +14,12 @@ import {
 import { useIsMobile } from "../../../../hooks/use-mobile";
 
 import { cn } from "@/utils/utils";
+import { useTranslation } from "react-i18next";
 import { NavProps } from "../../../../types/templates/types";
 
 export function Nav({ categories, currentTab, setCurrentTab }: NavProps) {
   const isMobile = useIsMobile();
+  const { t } = useTranslation();
 
   return (
     <Sidebar collapsible={isMobile ? "icon" : "none"} className="max-w-[230px]">
@@ -50,7 +52,7 @@ export function Nav({ categories, currentTab, setCurrentTab }: NavProps) {
                   : "mb-1 text-sm font-semibold text-muted-foreground"
               }`}
             >
-              {category.title}
+              {t(category.title)}
             </SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
@@ -73,7 +75,7 @@ export function Nav({ categories, currentTab, setCurrentTab }: NavProps) {
                       <span
                         data-testid={`category_title_${convertTestName(link.title)}`}
                       >
-                        {link.title}
+                        {t(link.title)}
                       </span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
